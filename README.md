@@ -1,6 +1,6 @@
 ### pygame_experiments
 
-This directory contains my Pygame experiments. At the moment there are:
+This directory contains some Pygame experiments of mine. At the moment there are:
 
 - Horizontal Starfield
 - Vintage Input
