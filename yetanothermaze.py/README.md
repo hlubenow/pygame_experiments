@@ -1,8 +1,10 @@
-yetanothermaze.py 1.0 - Pygame script, that lets you walk through a 3D maze
+yetanothermaze.py 1.1 - Pygame script, that lets you walk through a 3D maze
 
 Copyright (C) 2021, hlubenow.
 
 License: GNU GPL (version 3 or above)
+
+Version 1.1: Now with solid (= filled) walls.
 
 #### Description, license notes and credits (all in one)
 
