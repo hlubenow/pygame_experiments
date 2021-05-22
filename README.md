@@ -3,6 +3,7 @@
 This directory contains some Pygame experiments of mine. At the moment there are:
 
 - Horizontal Starfield
+- Scrolling Background
 - Vintage Input
 - Yet another maze
 
