@@ -1,6 +1,6 @@
 ### scrollexample.py
 
-This is an example of creating scrolling game backgrounds in Pygame.
+This is an example of creating a scrolling game background in Pygame.
 
 Making the background scroll while the player avatar is animated on a spot, to give the illusion of movement, is an essential programming technique, that is used in many 2D games. Think of Atari games like "River Raid" or "Dropzone", C64 games like "Uridium" or Amiga games like "Giana Sisters", "Turrican", "Hybris", "Silkworm" or "Katakis".
 
