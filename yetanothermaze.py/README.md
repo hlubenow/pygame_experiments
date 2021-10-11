@@ -25,3 +25,5 @@ I used the [Python maze generation code by 'exciteabletom'](https://github.com/e
 The ladder was my own development. There may have been such maze ladders in 1980s' games somewhere.
 
 Sound for hitting a wall: Free software synthesizer "ZynAddSubFX".
+
+It seems, these kind of mazes go back to a game called [Maze War](https://en.wikipedia.org/wiki/Maze_War), which was already created in 1972/1973. That game even supported network play for multiple players, that could walk through the maze and shoot each other. So in fact "Maze War" was the earliest "first-person shooter". I haven't played it though and wasn't familiar with its history, when I wrote this little project here.
