@@ -122,7 +122,7 @@ class Main:
                 x = self.env_.screenwidth + random.randrange(self.env_.screenwidth)
                 y = self.env_.pc_borderheight + random.randrange(self.env_.pc_paperheight)
                 # Every star should have its own y-coordinate:
-                while h.has_key(y):
+                while y in h:
                     y = self.env_.pc_borderheight + random.randrange(self.env_.pc_paperheight)
                 h[y] = 1
                 self.starfield.append(Star(self.env_, colors[g], (x, y), delays[g], accel[g]))
