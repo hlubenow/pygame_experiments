@@ -6,6 +6,7 @@ This directory contains some Pygame experiments of mine. At the moment there are
 - Scrolling Background
 - Vintage Input
 - Yet another maze
+- Rainbow Colors
 
 Check the README files in the subdirectories for details.
 
