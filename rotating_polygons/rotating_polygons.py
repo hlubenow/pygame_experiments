@@ -130,7 +130,7 @@ class Polygon:
 
         # Connect points:
         for i in self.connectdata:
-            pygame.draw.line(screen, (255, 255, 255), (points[i[0]][0], points[i[0]][1]) , (points[i[1]][0], points[i[1]][1]))
+            pygame.draw.line(screen, (255, 255, 255), (points[i[0]][0], points[i[0]][1]) , (points[i[1]][0], points[i[1]][1]), 2)
 
         # self.printAngles()
 
