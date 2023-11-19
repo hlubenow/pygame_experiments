@@ -1,4 +1,4 @@
-#### Rotating Polygons 1.0
+### Rotating Polygons 1.0
 Rotation of Polygons such as cubes and pyramids as seen in classic vector graphics games.
 Based upon:
 
