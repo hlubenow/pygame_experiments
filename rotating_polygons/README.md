@@ -2,8 +2,8 @@
 Rotation of Polygons such as cubes and pyramids as seen in classic vector graphics games.
 Based upon:
 
-https://github.com/yuta-51/3DProjection
-https://github.com/Magoninho/3D-projection-tutorial
+- https://github.com/yuta-51/3DProjection
+- https://github.com/Magoninho/3D-projection-tutorial
 
 Math-code was taken from there. So it's basically just that, I made it just a little more convenient for me.
 
