@@ -5,8 +5,8 @@ import pygame
 
 """
     inputhandler 1.0 - My Standard Input Handler for Pygame.
-                       Control keys for directions, Control-keys for "fire".
-                       Plus support for one joystick.
+                       Cursor keys for directions, Control-keys for "fire".
+                       Support for one joystick.
 
     Copyright (C) 2023 Hauke Lubenow
 
