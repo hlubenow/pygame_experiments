@@ -8,6 +8,7 @@ This directory contains some Pygame experiments of mine. At the moment there are
 - Yet another maze
 - Rainbow Colors
 - Rotating Polygons
+- Code Skeleton for Pygame Projects
 
 Check the README files in the subdirectories for details.
 
