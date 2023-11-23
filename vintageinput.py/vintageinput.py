@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 """
@@ -396,7 +396,7 @@ class Data:
                                    "textcursor" : "black"} }
 
         self.colorset = {}
-        print COLORSET
+        print(COLORSET)
         for i in self.colorsets[COLORSET].keys():
             self.colorset[i] = self.colors[self.colorsets[COLORSET][i]]
 
