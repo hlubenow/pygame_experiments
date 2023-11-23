@@ -1,7 +1,5 @@
 ### pygame_experiments
 
-Intervention: Unfortunately there was something about speed-control in Pygame, I didn't fully understand yet. Now I do though. "Code Skeleton" is already updated, but the rest still needs fixing. Please give me some time to do it.
-
 This directory contains some Pygame experiments of mine. At the moment there are:
 
 - Horizontal Starfield
