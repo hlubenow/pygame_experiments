@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 import pygame
@@ -417,7 +417,7 @@ class Main:
         self.running = True
 
         while self.running:
-            self.clock.tick(FPS)
+            self.clocktick = self.clock.tick(FPS)
             if self.processEvents() == "quit":
                 self.running = False
             self.screen.fill((0, 0, 0))
