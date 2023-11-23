@@ -1,8 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 MAZE_SIZE       = (20, 20)
-SPEEDSETTING    = 300
 
 WALLCOLOR       = "blue_grey"
 # Filled walls:
@@ -235,20 +234,20 @@ class Player:
     def rotateLeft(self):
         self.direction = self.cell.getRotate(self.direction, "left")
         self.status = "rotated"
-        print self.direction
-        print
+        print(self.direction)
+        print()
 
     def rotateRight(self):
         self.direction = self.cell.getRotate(self.direction, "right")
         self.status = "rotated"
-        print self.direction
-        print
+        print(self.direction)
+        print()
 
     def turnBackwards(self):
         self.direction = self.cell.wall_pairs[self.direction]
         self.status = "rotated"
-        print self.direction
-        print
+        print(self.direction)
+        print()
 
     def moveForward(self):
         self.status = None
@@ -257,13 +256,13 @@ class Player:
             self.cell = cell
             self.x    = cell.x
             self.y    = cell.y
-            print self.direction
-            print self.x, self.y
-            print 
+            print(self.direction)
+            print(self.x, self.y)
+            print()
             self.status = "moved"
             if self.cell.isExit:
-                print "Exit found!"
-                print
+                print("Exit found!")
+                print()
         else:
             self.status = "blocked"
 
@@ -523,13 +522,12 @@ class Main:
         self.paper  = DrawScreen(self.env_, self.maze, self.player)
         self.clock  = pygame.time.Clock()
         self.running = True
-        print
-        print "Welcome to the maze!"
-        print
+        print()
+        print("Welcome to the maze!")
+        print()
 
         while self.running:
-            self.clock.tick(FPS)
-            self.timer = pygame.time.get_ticks()
+            self.clocktickt = self.clock.tick(FPS)
             self.screen.fill(COLORS["black"])
 
             result = self.processEvents()
