@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding: utf-8
 
 """
@@ -28,7 +28,6 @@ import random
 
 SCALEFACTOR = 3
 FPS         = 50
-SPEEDSETTING = 0
 
 STARS_PER_GROUP = 30
 
@@ -50,16 +49,15 @@ class Environment:
 
 class Star:
 
-    def __init__(self, env_, color, position, delay, accel):
+    def __init__(self, env_, color, position, speed):
         self.env_      = env_
         self.surface   = pygame.Surface((SCALEFACTOR, SCALEFACTOR))
         self.surface   = self.surface.convert()
         self.rect      = self.surface.get_rect()
+        self.speed     = speed
         self.posx      = position[0]
         self.initposx  = self.posx
         self.posy      = position[1]
-        self.delaytime = delay + SPEEDSETTING 
-        self.accel     = accel
         self.surface.fill(color)
         self.timer     = pygame.time.get_ticks()
 
@@ -70,14 +68,11 @@ class Star:
         else:
             return False
  
-    def moveLeft(self, currenttime):
-        if currenttime - self.timer < self.delaytime:
-            return
-        self.posx -= self.accel * SCALEFACTOR
+    def moveLeft(self, clocktick):
+        self.posx -= self.speed * SCALEFACTOR
         if self.posx < 0:
             self.posx = self.initposx
         self.rect.topleft = (self.posx, self.posy)
-        self.timer = currenttime
 
     def draw(self, screen):
         screen.blit(self.surface, self.rect)
@@ -95,13 +90,12 @@ class Main:
         self.running = True
 
         while self.running:
-            self.clock.tick(FPS)
-            self.timer = pygame.time.get_ticks()
+            self.clocktick = self.clock.tick(FPS)
             if self.processEvents() == "quit":
                 self.running = False
             self.screen.fill(BLACK)
             for star in self.starfield:
-                star.moveLeft(self.timer)
+                star.moveLeft(self.clocktick)
                 if star.inScreenRange():
                     star.draw(self.screen)
             pygame.display.flip()
@@ -113,8 +107,7 @@ class Main:
         colors = []
         for i in (85, 119, 187, 255):
             colors.append((i, i, i))
-        delays = (100, 50, 20, 0)
-        accel  = (2, 2, 2, 2)
+        speeds = [1.5, 2.2, 2.7, 3.5]
         h = {}
         for g in range(4):
             for n in range(STARS_PER_GROUP):
@@ -125,7 +118,7 @@ class Main:
                 while y in h:
                     y = self.env_.pc_borderheight + random.randrange(self.env_.pc_paperheight)
                 h[y] = 1
-                self.starfield.append(Star(self.env_, colors[g], (x, y), delays[g], accel[g]))
+                self.starfield.append(Star(self.env_, colors[g], (x, y), speeds[g]))
 
     def processEvents(self):
         pygame.event.pump()
