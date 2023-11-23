@@ -25,7 +25,6 @@ from inputhandler import InputHandler
 """
 
 SCALEFACTOR  = 3
-SPEEDSETTING = 0
 FPS          = 60
 
 COLORS = {"black"   : (0, 0, 0),
@@ -47,13 +46,11 @@ for i in c:
 
 class MySprite(pygame.sprite.Sprite):
 
-    def __init__(self, name, id, delaytime):
+    def __init__(self, name, id, speed):
         pygame.sprite.Sprite.__init__(self)
         self.name           = name
         self.id             = id
-        # The class has its own timer, that is different from main loop's timer:
-        self.timer          = pygame.time.get_ticks()
-        self.delaytime      = delaytime
+        self.speed          = speed
         self.image          = None
         self.rect           = None
 
@@ -76,33 +73,28 @@ class MySprite(pygame.sprite.Sprite):
 
 class Ball(MySprite):
 
-    def __init__(self, name, id, width, height, x, y, colorname, delaytime):
-        MySprite.__init__(self, name, id, delaytime)
+    def __init__(self, name, id, width, height, x, y, colorname, speed):
+        MySprite.__init__(self, name, id, speed)
         self.createImage(width, height, colorname)
         self.setPosition(x, y)
 
-    def move(self, direction, ssize_screen, currenttime):
-        if currenttime - self.timer <= self.delaytime:
-            return
-
+    def move(self, direction, ssize_screen, clocktick):
         if direction == "left":
-            self.spos_x -= 1
+            self.spos_x -= self.speed * clocktick
             if self.spos_x < 0:
                 self.setPosition(ssize_screen[0], self.spos_y)
         if direction == "right":
-            self.spos_x += 1
+            self.spos_x += self.speed * clocktick
             if self.spos_x > ssize_screen[0]:
                 self.setPosition(0, self.spos_y)
         if direction == "up":
-            self.spos_y -= 1
+            self.spos_y -= self.speed * clocktick
             if self.spos_y < 0:
                 self.setPosition(self.spos_x, ssize_screen[1])
         if direction == "down":
-            self.spos_y += 1
+            self.spos_y += self.speed * clocktick
             if self.spos_y > ssize_screen[1]:
                 self.setPosition(self.spos_x, 0 )
-
-        self.timer = currenttime
 
     def createImage(self, ssize_x, ssize_y, colorname):
         self.image     = pygame.Surface((ssize_x * SCALEFACTOR, ssize_y * SCALEFACTOR))
@@ -134,8 +126,7 @@ class Main:
         self.initSprites()
         self.running = True
         while self.running:
-            self.clock.tick(FPS)
-            self.timer = pygame.time.get_ticks()
+            self.clocktick = self.clock.tick(FPS)
             self.screen.fill((0, 0, 0))
 
             self.ballgroup.draw(self.screen)
@@ -148,7 +139,7 @@ class Main:
         pygame.quit()
 
     def initSprites(self):
-        self.ball = Ball("ball", 1, 10, 10, 130, 100, "red", SPEEDSETTING * 2)
+        self.ball = Ball("ball", 1, 10, 10, 130, 100, "red", speed = 0.15)
         self.ballgroup = BallGroup()
         self.ballgroup.add(self.ball)
 
@@ -159,7 +150,7 @@ class Main:
             if i == "quit" and action[i]:
                 return "quit"
             if action[i]:
-                self.ball.move(i, self.ssize_screen, currenttime = self.timer)
+                self.ball.move(i, self.ssize_screen, self.clocktick)
         return 0
 
 Main()
