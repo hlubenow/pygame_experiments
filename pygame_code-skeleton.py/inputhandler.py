@@ -63,6 +63,9 @@ class InputHandler:
         action = {"left" : False, "right" : False, "up" : False, "down" : False,
                   "fire" : False, "quit" : False}
         for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                action["quit"] = True
+                continue
             if event.type == pygame.KEYDOWN:
                 for i in self.keypresses:
                     if event.key == i:
