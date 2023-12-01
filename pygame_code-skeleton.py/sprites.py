@@ -63,7 +63,8 @@ class Player(MySprite):
 
     def createImage(self, ssize_x, ssize_y, colorname):
         self.image = pygame.Surface((ssize_x * SCALEFACTOR, ssize_y * SCALEFACTOR))
-        self.image = self.image.convert_alpha()
+        self.image = self.image.convert()
         self.rect  = self.image.get_rect()
-        self.image.fill(COLORS["transparent"])
+        self.image.fill(COLORS["black"])
         pygame.draw.circle(self.image, COLORS[colorname], (self.rect.width // 2, self.rect.height // 2), self.rect.height // 2)
+        self.image.set_colorkey(COLORS["black"])
