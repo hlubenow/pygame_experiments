@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 # coding: utf-8
 
-import pygame
-import os
 from sprites import *
+from groups import *
 from config import *
+from inputhandler import *
+
+import os
 
 """
     pygame_code-skeleton.py 2.0 - Some Pygame code to build from there.
@@ -39,16 +41,25 @@ class Game:
         while self.running:
             self.clocktick = self.clock.tick(FPS)
             self.screen.fill((0, 0, 0))
+            self.checkInput()
 
-            self.all_sprites.update()
-            self.all_sprites.draw(self.screen)
+            self.playergroup.update()
+            self.playergroup.draw(self.screen)
 
             pygame.display.flip()
         pygame.quit()
 
     def initSprites(self):
-        self.all_sprites = pygame.sprite.Group()
-        self.playergroup = pygame.sprite.Group()
         self.player      = Player("player", 1, self, 10, 10, 130, 100, "red", speed = 0.15)
+        self.playergroup = PlayerGroup()
+        self.playergroup.add(self.player)
+
+    def checkInput(self):
+        self.keyaction = self.ih.getKeyboardAndJoystickAction()
+        if self.keyaction["quit"]:
+            self.running = False
+            return
+
 
 Game()
+

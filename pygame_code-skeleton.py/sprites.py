@@ -2,14 +2,13 @@
 # coding: utf-8
 
 import pygame
-from inputhandler import *
 from config import *
 
 class MySprite(pygame.sprite.Sprite):
 
-    def __init__(self, name, id, game, speed, groups):
+    def __init__(self, name, id, game, speed):
+        pygame.sprite.Sprite.__init__(self)
         self.game           = game
-        pygame.sprite.Sprite.__init__(self, groups)
         self.name           = name
         self.id             = id
         self.speed          = speed
@@ -27,11 +26,10 @@ class MySprite(pygame.sprite.Sprite):
 class Player(MySprite):
 
     def __init__(self, name, id, game, width, height, spos_x, spos_y, colorname, speed):
-        self.groups = game.all_sprites, game.playergroup
-        MySprite.__init__(self, name, id, game, speed, self.groups)
+        MySprite.__init__(self, name, id, game, speed)
+        self.game = game
         self.spos_x = spos_x
         self.spos_y = spos_y
-        self.ih = InputHandler(True)
         self.createImage(width, height, colorname)
         self.setPosition(self.spos_x, self.spos_y)
 
@@ -40,23 +38,22 @@ class Player(MySprite):
         self.setPosition(self.spos_x, self.spos_y)
 
     def movement(self):
-        action = self.ih.getKeyboardAndJoystickAction()
-        if action["quit"]:
+        if self.game.keyaction["quit"]:
             self.game.running = False
             return
-        if action["left"]:
+        if self.game.keyaction["left"]:
             self.spos_x -= self.speed * self.game.clocktick
             if self.spos_x < 0:
                 self.setPosition(SSIZE_SCREEN_X, self.spos_y)
-        if action["right"]:
+        if self.game.keyaction["right"]:
             self.spos_x += self.speed * self.game.clocktick
             if self.spos_x > SSIZE_SCREEN_X:
                 self.setPosition(0, self.spos_y)
-        if action["up"]:
+        if self.game.keyaction["up"]:
             self.spos_y -= self.speed * self.game.clocktick
             if self.spos_y < 0:
                 self.setPosition(self.spos_x, SSIZE_SCREEN_Y)
-        if action["down"]:
+        if self.game.keyaction["down"]:
             self.spos_y += self.speed * self.game.clocktick
             if self.spos_y > SSIZE_SCREEN_Y:
                 self.setPosition(self.spos_x, 0 )
