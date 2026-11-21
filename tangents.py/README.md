@@ -1,7 +1,5 @@
 tangents.py 1.0 - Drawing tangents from a small dot to a circle
 
-Basically, this was about the math. Unfortunately, ChatGPT was able to improve it just in this respect.
-
 Use cursor keys, and the left control key.
 
 Copyright (C) 2026, hlubenow.
