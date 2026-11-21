@@ -27,3 +27,6 @@ The ladder was my own development. There may have been such maze ladders in 1980
 Sound for hitting a wall: Free software synthesizer "ZynAddSubFX".
 
 It seems, these kind of graphical mazes go back to a game called "[Maze War](https://en.wikipedia.org/wiki/Maze_War)", which surprisingly was already created in about 1973 and ran on these huge computers of universities or other institutions (model "Imlac PDS-1", a predecessor to the later "computer workstations"). That game even supported network play. Multiple players could walk through the maze and shoot each other. So in fact "Maze War" was the earliest "first-person shooter". I haven't played it though and wasn't familiar with its history, when I wrote this little project here.
+https://github.com/hlubenow/pygame_experiments/blob/main/yetanothermaze.py/yetanothermaze.jpg
+
+![YetAnotherMaze](https://github.com/hlubenow/pygame_experiments/blob/main/yetanothermaze.py/yetanothermaze.jpg)
